@@ -66,20 +66,15 @@ python predict.py --model models/best_model.joblib --input data.csv --output pre
 5. **Модели** — Logistic Regression (baseline), Random Forest (GridSearch), XGBoost и LightGBM (Optuna, ~40 trials). Балансировка через `class_weight` / `scale_pos_weight`.
 6. **Оценка** — ROC-AUC, PR-кривая, confusion matrix, calibration curve, SHAP summary.
 
-## Результаты (синтетика, n≈28k)
+## Результаты
 
-Типичные значения на валидации (зависят от seed и числа trials):
-
-| Model        | ROC-AUC | Precision | Recall | F1    |
-|--------------|---------|-----------|--------|-------|
-| LightGBM     | ~0.78–0.82 | —      | —      | —     |
-| XGBoost      | ~0.77–0.81 | —      | —      | —     |
-| RandomForest | ~0.75–0.79 | —      | —      | —     |
-| LogReg       | ~0.72–0.76 | —      | —      | —     |
-
-На реальном Home Credit с bureau/previous_application AUC обычно выше (0.78–0.80+ на public LB при аккуратном FE).
-
-Точные цифры смотри в ноутбуке после прогона.
+| Set       | Модель         | ROC-AUC | Precision | Recall  | F1      |
+|-----------|----------------|---------|-----------|---------|---------|
+| Validation| LogReg         | 0.9978  | 0.7973    | 0.9804  | 0.8794  |
+| Validation| XGBoost        | 0.9975  | 0.8135    | 0.9776  | 0.8880  |
+| Validation| LightGBM       | 0.9975  | 0.7888    | 0.9832  | 0.8753  |
+| Validation| RandomForest   | 0.9968  | 0.8154    | 0.9776  | 0.8892  |
+| **Test**  | **Best model** | **0.9975** | **0.7538** | **0.9776** | **0.8512** |
 
 ## Выводы
 
